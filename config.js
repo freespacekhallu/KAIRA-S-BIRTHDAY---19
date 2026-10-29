@@ -10,5 +10,6 @@ window.BIRTHDAY_CONFIG = {
   ],
   finalMessage:'May the next twelve months surprise you in all the best ways.',
   whatsappLink:'', email:'', secretMessage:'No matter what this year brings, I hope you remember this: you are someone’s favorite kind of magic. Keep shining, birthday girl. 💖',
-  birthdayAudio:'birthday.mp3' // Optional: set to 'birthday.mp3' and add your own file beside index.html.
+  birthdayAudio:'birthday.mp3', // Background music pauses while a video is playing.
+  videos:['videos/moment-01.mp4','videos/moment-02.mp4','videos/moment-03.mp4']
 };
