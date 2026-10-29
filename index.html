@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#160b27">
+<meta name="description" content="A little midnight magic for a very special 19th birthday.">
+<title>Birthday Surprise ✨</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.3/confetti.browser.min.js" defer></script>
+<script src="config.js" defer></script>
+<script src="script.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="site-brand" href="#home" aria-label="Birthday Surprise home"><span>Birthday Surprise ✨</span><small>little wishes from Khalandar 💌</small></a>
+  <nav class="site-nav" aria-label="Birthday sections">
+    <a href="#home">Home</a><a href="#cake">Cake</a><a href="#wish">Wishes</a><a href="#game">Game</a><a href="#finale">Finale</a>
+  </nav>
+  <button id="mute" class="icon-button" aria-label="Mute Happy Birthday music" title="Happy Birthday music on">🔊</button>
+</header>
+<div id="loading" aria-live="polite"><div class="loader-inner"><div class="loader-star">✦</div><div class="loader-title">Something special is loading for <span data-name>KAIRA</span>...</div><div class="loader-bar"></div></div></div>
+<div id="startGate"><div class="gate-card glass"><div class="gate-mark">✦</div><div class="eyebrow">A little midnight magic</div><h1>For <em class="pink" data-name>KAIRA</em></h1><p>A tiny world made just for you. Find a cozy spot and enjoy your own music-box Happy Birthday tune.</p><button class="button" id="startBtn">Tap to begin the magic ✨</button><p style="font-size:.7rem;margin-bottom:0">Sound can be switched off anytime</p></div></div>
+<canvas id="starCanvas" aria-hidden="true"></canvas><canvas id="fireworks" aria-hidden="true"></canvas><div class="cursor-glow" id="cursorGlow"></div>
+<div class="gift-experience" id="giftExperience" aria-hidden="true"><div class="gift-box"><div class="gift-base"></div><div class="gift-lid"><i class="gift-bow"></i></div><div class="gift-sparkle">✦ ✨ ✧</div></div><div class="gift-caption">A little something, just for you 💖</div></div>
+<main>
+<section class="section hero" id="home"><span class="hero-spark one">✧</span><span class="hero-spark two">✦</span><span class="hero-spark three">✧</span><div class="hero-content"><div class="eyebrow date-line">30 October 2026 <span>✦</span> A day made for you</div><h1><span data-name>KAIRA</span><br><em>turns nineteen</em></h1><p class="hero-copy" id="heroType">Today is a very special day...</p><div id="countWrap"><div class="eyebrow" id="countLabel">Counting down to <span data-name>KAIRA</span>'s big day</div><div class="countdown" id="countdown"><div class="time-box"><b id="days">00</b><span>days</span></div><div class="time-box"><b id="hours">00</b><span>hours</span></div><div class="time-box"><b id="minutes">00</b><span>mins</span></div><div class="time-box"><b id="seconds">00</b><span>secs</span></div></div></div><button id="openSurprise" class="button">Open Your Surprise 🎁</button><div class="scroll-note">Scroll into your birthday story<span>⌄</span></div></div></section>
+<section class="section cake-section" id="cake"><div class="wrap cake-layout"><div class="cake-copy"><div class="eyebrow">Make a wish, lovely human</div><h2 class="section-title">A cake made<br>of <span class="pink">starlight.</span></h2><p class="section-lede">Every candle is a little wish waiting to come true. Drag the cake to see it sparkle, then take a breath and blow them out.</p><div class="cake-controls"><p class="wish-prompt" id="wishPrompt">Make a wish, then blow the candles 🕯️</p><button id="blowBtn" class="button">Blow the candles ✨</button><button id="micBtn" class="button secondary">Try the mic</button></div></div><div class="cake-stage glass" id="cakeStage"><div id="cakeMount"></div><div class="birthday-overlay" id="birthdayOverlay"><span>Happy Birthday<br><span data-name>KAIRA</span>! ✨</span></div><div class="stage-hint">Drag to turn your cake · tap anywhere for a sparkle</div></div></div></section>
+<section class="section" id="wish"><div class="wrap"><div class="center"><div class="eyebrow">A note from the heart</div><h2 class="section-title">For your <span class="gold">next chapter</span></h2><p class="section-lede">Nineteen looks like possibility, late-night laughs, brave little choices, and becoming more yourself every day.</p></div><div class="wish-grid"><div class="wish-card glass"><div class="wish-lines" id="wishLines"></div><div class="signature" id="signature">— <span data-sender>MOHAMMED KHALANDAR</span></div></div></div></div></section>
+<section class="section" id="game"><div class="wrap"><div class="center"><div class="eyebrow">A tiny birthday challenge</div><h2 class="section-title">Catch the <span class="pink">birthday joy</span></h2><p class="section-lede">Catch the lovely things, dodge the grumpy clouds, and see what your birthday score unlocks.</p></div><div class="game-card glass"><div class="game-top"><span>Score <b id="score">0</b> <span id="combo"></span></span><span>Time <b id="timer">30</b>s</span><span>Best <b id="bestScore">0</b></span></div><div class="game-board" id="gameBoard" aria-label="Birthday game area"><canvas id="gameCanvas" aria-hidden="true"></canvas></div><div class="game-controls"><button class="button" id="gameBtn">Start catching ✨</button><span class="muted" style="font-size:.72rem">Drag your basket</span></div><p class="game-message" id="gameMessage">Ready when you are, birthday star.</p><div class="reward" id="reward"></div></div></div></section>
+<section class="section finale" id="finale"><div class="wrap"><div class="eyebrow">The night is still young</div><h2>Here's to 19,<br>may it be your <em class="pink">best year yet</em> 💖</h2><p class="finale-message" id="finalMessage"></p><div class="finale-actions"><button class="button" id="replayBtn">Replay the magic ↻</button><a class="button secondary" id="replyBtn" href="#">Send a reply 💌</a></div></div><div class="footer">A little birthday cheer from your friend, <span data-sender>MOHAMMED KHALANDAR</span> ✨ · <span id="easterEgg" class="easter" title="A tiny secret">19</span></div></section>
+</main>
+<div class="secret" id="secret"><div class="secret-card glass"><div style="font-size:3rem">🌙💫🎂</div><h3>A secret wish!</h3><p id="secretText" class="serif" style="font-size:1.2rem;line-height:1.6"></p><button class="button secondary" id="closeSecret">Keep this little secret ✨</button></div></div>
+</body></html>
