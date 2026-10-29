@@ -9,7 +9,7 @@ window.BIRTHDAY_CONFIG = {
     'I’m always wishing the very best for you. Have the loveliest birthday! 💖'
   ],
   finalMessage:'May the next twelve months surprise you in all the best ways.',
-  whatsappLink:'', email:'', secretMessage:'No matter what this year brings, I hope you remember this: you are someone’s favorite kind of magic. Keep shining, birthday girl. 💖',
+  whatsappLink:'', email:'', secretMessage:'Whatever life brings, face it one step at a time — you’re stronger than you think. Keep making your parents proud, stay kind, and may you always be blessed with happiness and good health. 💛',
   birthdayAudio:'birthday.mp3', // Background music pauses while a video is playing.
   videos:['videos/moment-01.mp4','videos/moment-02.mp4','videos/moment-03.mp4']
 };
