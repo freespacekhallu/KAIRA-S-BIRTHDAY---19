@@ -13,6 +13,8 @@ A mobile-friendly birthday experience for Kaira, built as a simple VS Code proje
 
 The videos load only when played to keep the page lighter on phones. Their audio takes priority: background music pauses while a video plays and resumes when it is paused or ends. Three.js, GSAP, canvas-confetti, and Google Fonts load from their CDNs, so an internet connection is needed when previewing or sharing the site.
 
+The welcome screen has a vintage illustrated music sleeve, and the Wishes section opens with an animated envelope before revealing the existing birthday note.
+
 ## Open in VS Code
 
 Open this folder in VS Code. Edit names, messages, music, or the video list in `config.js`. Replace the files in `videos/` if you want to swap the memories, keeping their names or updating the matching paths in `config.js`.
