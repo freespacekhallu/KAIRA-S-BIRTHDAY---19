@@ -7,7 +7,9 @@ const videoTrack=$('#videoTrack'),videoDots=$('#videoDots');
 CONFIG.videos.forEach((src,index)=>{
   const slide=document.createElement('article');slide.className='video-slide';slide.setAttribute('aria-label',`Video ${index+1} of ${CONFIG.videos.length}`);
   const video=document.createElement('video');video.className='memory-video';video.controls=true;video.playsInline=true;video.preload='none';video.setAttribute('aria-label',`Birthday video ${index+1}`);
-  const source=document.createElement('source');source.src=src;source.type='video/mp4';video.appendChild(source);slide.appendChild(video);videoTrack.appendChild(slide);
+  const source=document.createElement('source');source.src=src;source.type='video/mp4';video.appendChild(source);slide.appendChild(video);
+  const playButton=document.createElement('button');playButton.type='button';playButton.className='video-play';playButton.setAttribute('aria-label',`Play video ${index+1}`);playButton.textContent='▶';playButton.addEventListener('click',async()=>{if(video.paused){try{await video.play()}catch{playButton.textContent='↻';playButton.setAttribute('aria-label',`Retry video ${index+1}`)}}else video.pause()});
+  video.addEventListener('play',()=>{playButton.textContent='Ⅱ';playButton.setAttribute('aria-label',`Pause video ${index+1}`);slide.classList.add('is-playing')});video.addEventListener('pause',()=>{playButton.textContent='▶';playButton.setAttribute('aria-label',`Play video ${index+1}`);slide.classList.remove('is-playing')});video.addEventListener('ended',()=>{playButton.textContent='↻';playButton.setAttribute('aria-label',`Replay video ${index+1}`);slide.classList.remove('is-playing')});slide.appendChild(playButton);videoTrack.appendChild(slide);
   const dot=document.createElement('button');dot.type='button';dot.className='video-dot';dot.setAttribute('aria-label',`Show video ${index+1}`);dot.setAttribute('aria-pressed',index===0?'true':'false');dot.addEventListener('click',()=>setVideoSlide(index));videoDots.appendChild(dot);
 });
 $('#replyBtn').href=CONFIG.whatsappLink||('mailto:'+encodeURIComponent(CONFIG.email||'')+'?subject='+encodeURIComponent('A birthday thank you 💖'));
